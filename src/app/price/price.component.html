@@ -1,0 +1,43 @@
+<div class="form-group"
+  style="width: 800px; height: 800px; margin: 0 auto; margin-top: 50px; border-radius: 10px; border-radius: 05px;">
+  <h1>Precios</h1>
+  <br>
+  <table id="table" class="display table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Vendedor</th>
+        <th>Parte</th>
+        <th>No. Cat&aacute;logo</th>
+        <th>Precio</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let price of allPrices | async">
+        <td>{{price.Vendor_Name}}</td>
+        <td>{{price.Part_Description}}</td>
+        <td>{{price.CatalogNo}}</td>
+        <td>{{price.Value}}</td>
+        <td>
+          <button type="button" class="btn btn-info" (click)="loadPriceToEdit([price.Vendor, price.Part])">Actualizar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="deletePrice(price.Vendor, price.Part)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Vendedor</th>
+        <th>Parte</th>
+        <th>No. Cat&aacute;logo</th>
+        <th>Precio</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </tfoot>
+  </table>
+  <br />
+  <a routerLink="/prices/new" routerLinkActive="active" class="btn btn-secondary">Crear precio</a>
+</div>

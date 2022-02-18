@@ -1,0 +1,27 @@
+<div class="formbody">
+  <div class="container">
+    <div class="form-group">
+      <a routerLink="/parts" routerLinkActive="active" class="btn btn-secondary">Volver atr&aacute;s</a>
+    </div>
+
+    <p class="h2 text-center">
+      <span *ngIf="!partid; else updateText">Nueva parte</span>
+      <ng-template #updateText>Actualizar parte</ng-template>
+    </p>
+    <form [formGroup]="partsForm" (ngSubmit)="onFormSubmit(partsForm.value)">
+      <div class="form-group">
+        <label>Descripci&oacute;n: </label>
+        <input formControlName="Description" placeholder="Ingrese una descripción" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="!partsForm.valid" class="btn btn-success">
+            <span *ngIf="!partid; else updateText">Crear parte</span>
+        </button>
+      </div>
+    </form>
+    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0); font-size:20px; font-weight:bold" class="success" align="center">  
+      {{message}}  
+    </p>
+  </div>
+</div>

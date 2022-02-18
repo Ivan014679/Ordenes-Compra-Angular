@@ -1,0 +1,40 @@
+<div class="form-group"
+  style="width: 800px; height: 800px; margin: 0 auto; margin-top: 50px; border-radius: 10px; border-radius: 05px;">
+  <h1>&Oacute;rdenes de compra</h1>
+  <br>
+  <table id="table" class="display table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>No. Factura</th>
+        <th>Fecha</th>
+        <th>Vendedor</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let purchaseorder of allPurchaseOrders | async">
+        <td>{{purchaseorder.Bill_Number}}</td>
+        <td>{{purchaseorder.Date}}</td>
+        <td>{{purchaseorder.Vendor}}</td>
+        <td>
+          <button type="button" class="btn btn-info" (click)="loadPurchaseOrderToEdit(purchaseorder.Id)">Actualizar compra</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="deletePurchaseOrder(purchaseorder.Id)">Eliminar compra</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>No. Factura</th>
+        <th>Fecha</th>
+        <th>Vendedor</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+      </tr>
+    </tfoot>
+  </table>
+  <br />
+  <a routerLink="/purchase-orders/new" routerLinkActive="active" class="btn btn-secondary">Realizar una compra</a>
+</div>

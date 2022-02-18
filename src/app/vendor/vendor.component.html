@@ -1,0 +1,46 @@
+<div class="form-group" style="width: 800px; height: 800px; margin: 0 auto; margin-top: 50px; border-radius: 10px; border-radius: 05px;">
+  <h1>Vendedores</h1>
+  <br>
+  <table id="table" class="display table table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Direcci&oacute;n</th>
+            <th>Ciudad</th>
+            <th>Tel&eacute;fono</th>
+            <th>Regi&oacute;n</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vendor of allVendors | async">
+        <td>{{vendor.Name}}</td>
+        <td>{{vendor.Address}}</td>
+        <td>{{vendor.City}}</td>
+        <td>{{vendor.Phone}}</td>
+        <td>{{vendor.Region}}</td>
+        <td>
+          <button type="button" class="btn btn-info" (click)="loadVendorToEdit(vendor.Id)">Actualizar</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="deleteVendor(vendor.Id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Nombre</th>
+            <th>Direcci&oacute;n</th>
+            <th>Ciudad</th>
+            <th>Tel&eacute;fono</th>
+            <th>Regi&oacute;n</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+    </tfoot>
+  </table>
+  <br />
+  <a routerLink="/vendors/new" routerLinkActive="active" class="btn btn-secondary">Crear vendedor</a>
+</div>
+

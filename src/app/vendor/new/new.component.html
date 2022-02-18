@@ -1,0 +1,49 @@
+<div class="formbody">
+  <div class="container">
+    <div class="form-group">
+      <a routerLink="/vendors" routerLinkActive="active" class="btn btn-secondary">Volver atr&aacute;s</a>
+    </div>
+
+    <p class="h2 text-center">
+      <span *ngIf="!vendorid; else updateText">Nuevo vendedor</span>
+      <ng-template #updateText>Actualizar vendedor</ng-template>      
+    </p>
+    <form [formGroup]="vendorsForm" (ngSubmit)="onFormSubmit(vendorsForm.value)">
+      <div class="form-group">
+        <label>Nombre: </label>
+        <input formControlName="Name" placeholder="Ingrese su nombre" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>Direcci&oacute;n: </label>
+        <input formControlName="Address" placeholder="Ingrese su dirección" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>Ciudad: </label>
+        <select formControlName="City" class="form-control">
+          <option value="" disabled selected>Selecciona una ciudad</option>
+          <option [value]='city.Id' *ngFor="let city of allCities | async">{{city.Name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tel&eacute;fono: </label>
+        <input formControlName="Phone" numeric numericType="number" placeholder="Ingrese su teléfono" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label>Regi&oacute;n: </label>
+        <select formControlName="Region" class="form-control">
+          <option value="" disabled selected>Selecciona una regi&oacute;n</option>
+          <option [value]='region.Id' *ngFor="let region of allRegions | async">{{region.Name}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+          <button type="submit" [disabled]="!vendorsForm.valid" class="btn btn-success">
+            <span *ngIf="!vendorid; else updateText">Crear vendedor</span>
+          </button>
+      </div>
+    </form>
+    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0); font-size:20px; font-weight:bold" class="success" align="center">  
+      {{message}}  
+    </p>
+  </div>
+</div>

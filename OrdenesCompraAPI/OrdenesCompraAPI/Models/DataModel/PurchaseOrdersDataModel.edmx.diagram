@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b99928ee5a74f85a9742ad6c5797c33" Name="Diagram1">
+        <EntityTypeShape EntityType="PurchaseOrdersModel.City" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseOrdersModel.OrderDetail" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseOrdersModel.Part" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseOrdersModel.Price" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseOrdersModel.PurchaseOrder" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseOrdersModel.Region" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PurchaseOrdersModel.Vendor" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_Vendor_ToCity" ManuallyRouted="false" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_OrderDetail_ToPart" ManuallyRouted="false" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_OrderDetail_ToPurchaseOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_Price_ToPart" ManuallyRouted="false" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_Price_ToVendor" ManuallyRouted="false" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_PurchaseOrder_ToVendor" ManuallyRouted="false" />
+        <AssociationConnector Association="PurchaseOrdersModel.FK_Vendor_ToRegion" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

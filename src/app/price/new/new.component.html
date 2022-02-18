@@ -1,0 +1,47 @@
+<div class="formbody">
+  <div class="container">
+    <div class="form-group">
+      <a routerLink="/prices" routerLinkActive="active" class="btn btn-secondary">Volver atr&aacute;s</a>
+    </div>
+
+    <p class="h2 text-center">
+      <span *ngIf="!ids; else updateText">Nuevo precio</span>
+      <ng-template #updateText>Actualizar precio</ng-template>
+    </p>
+    <form [formGroup]="pricesForm" (ngSubmit)="onFormSubmit(pricesForm.value)">
+      <div class="form-group">
+        <label>Vendedor: </label>
+        <select formControlName="Vendor" class="form-control">
+          <option value="" disabled selected>Selecciona un vendedor</option>
+          <option [value]='vendor.Id' *ngFor="let vendor of allVendors | async">{{vendor.Name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Parte: </label>
+        <select formControlName="Part" class="form-control">
+          <option value="" disabled selected>Selecciona una parte</option>
+          <option [value]='part.Id' *ngFor="let part of allParts | async">{{part.Description}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>N&oacute;mero de cat&aacute;logo: </label>
+        <input formControlName="CatalogNo" placeholder="Ingrese el número de catálogo" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Precio: </label>
+        <input formControlName="Value" numeric numericType="decimal" placeholder="Ingrese el precio"
+          class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="!pricesForm.valid" class="btn btn-success">
+            <span *ngIf="!ids; else updateText">Crear precio</span>
+        </button>
+      </div>
+    </form>
+    <p *ngIf="dataSaved" style="color:rgb(0, 128, 0); font-size:20px; font-weight:bold" class="success" align="center">  
+      {{message}}  
+    </p>
+  </div>
+</div>
+  

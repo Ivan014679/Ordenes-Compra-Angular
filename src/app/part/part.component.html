@@ -1,0 +1,37 @@
+<div class="form-group" style="width: 800px; height: 800px; margin: 0 auto; margin-top: 50px; border-radius: 10px; border-radius: 05px;">
+    <h1>Partes</h1>
+    <br>
+    <table id="table" class="display table table-hover">
+      <thead class="thead-dark">
+          <tr>
+              <th>Identificaci&oacute;n</th>
+              <th>Descripci&oacute;n</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let part of allParts | async">
+          <td>{{part.Id}}</td>
+          <td>{{part.Description}}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="loadPartToEdit(part.Id)">Actualizar</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="deletePart(part.Id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+              <th>Identificaci&oacute;n</th>
+              <th>Descripci&oacute;n</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+          </tr>
+      </tfoot>
+    </table>
+    <br />
+    <a routerLink="/parts/new" routerLinkActive="active" class="btn btn-secondary">Crear parte</a>
+  </div>
+  
